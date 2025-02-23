@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Boxes</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .box {
+            width: 200px;
+            height: 50px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            margin: 20px;
+            cursor: pointer;
+            transition: height 0.3s ease;
+            overflow: hidden;
+        }
+        .expanded {
+            height: 150px;
+        }
+        .options {
+            display: none;
+            padding: 10px;
+        }
+        .expanded .options {
+            display: block;
+        }
+        button {
+            margin: 5px;
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" onclick="toggleBox(this)">
+        Click Me
+        <div class="options">
+            <button onclick="changeColor(event, this, 'red')">Red</button>
+            <button onclick="changeColor(event, this, 'green')">Green</button>
+            <button onclick="changeColor(event, this, 'blue')">Blue</button>
+            <button onclick="changeSize(event, this, 'small')">Small</button>
+            <button onclick="changeSize(event, this, 'large')">Large</button>
+        </div>
+    </div>
+    <div class="box" onclick="toggleBox(this)">
+        Click Me
+        <div class="options">
+            <button onclick="changeColor(event, this, 'red')">Red</button>
+            <button onclick="changeColor(event, this, 'green')">Green</button>
+            <button onclick="changeColor(event, this, 'blue')">Blue</button>
+            <button onclick="changeSize(event, this, 'small')">Small</button>
+            <button onclick="changeSize(event, this, 'large')">Large</button>
+        </div>
+    </div>
+    <div class="box" onclick="toggleBox(this)">
+        Click Me
+        <div class="options">
+            <button onclick="changeColor(event, this, 'red')">Red</button>
+            <button onclick="changeColor(event, this, 'green')">Green</button>
+            <button onclick="changeColor(event, this, 'blue')">Blue</button>
+            <button onclick="changeSize(event, this, 'small')">Small</button>
+            <button onclick="changeSize(event, this, 'large')">Large</button>
+        </div>
+    </div>
+    
+    <script>
+        function toggleBox(box) {
+            box.classList.toggle('expanded');
+        }
+        function changeColor(event, btn, color) {
+            event.stopPropagation();
+            btn.closest('.box').style.backgroundColor = color;
+        }
+        function changeSize(event, btn, size) {
+            event.stopPropagation();
+            if (size === 'small') {
+                btn.closest('.box').style.width = '150px';
+            } else {
+                btn.closest('.box').style.width = '250px';
+            }
+        }
+    </script>
+</body>
+</html>
